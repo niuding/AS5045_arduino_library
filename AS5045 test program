@@ -4,26 +4,27 @@ AS5045 myAS5045(2,3,4); // data, clock, chip select, pins 7, 8, and 9 on the AS5
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop()
 {
   long value;
-  value = myAS5045.encoder_value();
-  Serial.print("measured value: ");
-  Serial.println(value);
-  value = myAS5045.encoder_degrees();
-  Serial.print("measured degrees: ");
-  Serial.println(value);
-  if (myAS5045.encoder_error())
+  int i = 0;
+  for(i=1; i<7; i++){
+  value = myAS5045.encoder_degrees(i);
+   Serial.print("Value :");
+   Serial.println(i);
+   Serial.println(value);
+ /* if (myAS5045.encoder_error(i))
   {
     Serial.println("error detected.");
     if (myAS5045.err_value.DECn) Serial.println("DECn error");
-    if (myAS5045.err_value.INCn) Serial.println("INCn error");
-    if (myAS5045.err_value.COF) Serial.println("COF error");
-    if (myAS5045.err_value.OCF) Serial.println("OCF error");
-    if (myAS5045.err_value.LIN) Serial.println("LIN error");
+    //if (myAS5045.err_value.INCn) Serial.println("INCn error");
+    //if (myAS5045.err_value.COF) Serial.println("COF error");
+    //if (myAS5045.err_value.OCF) Serial.println("OCF error");
+  //  if (myAS5045.err_value.LIN) Serial.println("LIN error");
+  }*/
+  delay(300);
   }
-  delay(2000);
 }
