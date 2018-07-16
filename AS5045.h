@@ -2,7 +2,8 @@
 #define AS5045_h
 
 #include "Arduino.h"
-
+#ifdef __cplusplus
+extern "C" {
 class AS5045
 {
   public:
@@ -23,5 +24,8 @@ class AS5045
     const uint16_t _data;         // data pin: input
     //nt32_t encode_number[6]={0,0,0,0,0,0};
 };
-
+#ifdef __cplusplus
+}
+#endif
+#endif
 #endif
